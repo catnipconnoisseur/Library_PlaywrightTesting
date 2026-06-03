@@ -1,0 +1,281 @@
+{
+  "project": "trial.uc.ac.id SQA testing",
+  "ai_agent": "Antigravity",
+  "timestamp": "2026-06-02T17:12:00+07:00",
+  "framework": "Playwright (TypeScript)",
+  "test_target": "https://trial.uc.ac.id",
+  "test_cases": [
+    {
+      "no": 1,
+      "id": "UTE - 1",
+      "description": "Mengakses Halaman Library",
+      "test_steps": [
+        "1. Masuk ke website trial.uc.ac.id",
+        "2. Klik tab login pada kanan atas halaman",
+        "3. Klik menu \"Akademik\"",
+        "4. Klik menu \"Library\""
+      ],
+      "test_data": {
+        "Username": "(NIM/Email)",
+        "Password": "Password email Universitas Ciputra"
+      },
+      "expected_result": "User berhasil masuk ke halaman Library",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 2,
+      "id": "UTE - 2",
+      "description": "Mengakses Online Catalog",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Online Catalog\""
+      ],
+      "test_data": null,
+      "expected_result": "Menampilkan daftar buku yang tersedia di Library Universitas Ciputra (Katalog)",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 3,
+      "id": "UTE - 3",
+      "description": "Melakukan Pencarian Buku Menggunakan Filter",
+      "test_steps": [
+        "1. Klik search bar",
+        "2. Masukkan judul",
+        "3. Klik tombol \"Add Filter\"",
+        "4. Klik tombol \"Search\""
+      ],
+      "test_data": {
+        "Location": "University Ciputra Surabaya",
+        "Add Filter": "Publisher -> PT Gramedia Pustaka Utama"
+      },
+      "expected_result": "User dapat melakukan pencarian buku berdasarkan filter yang tersedia",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 4,
+      "id": "UTE - 4",
+      "description": "Melihat Detail pada Buku yang akan dipinjam",
+      "test_steps": [
+        "1. Klik detail pada buku yang telah dicari",
+        "2. Klik checklist di samping rincian buku jika terdapat buku yang ingin dipinjam"
+      ],
+      "test_data": "Sesuai dengan list buku-buku yang muncul setelah dilakukan search",
+      "expected_result": "User dapat melihat detail buku yang akan dipinjam",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 5,
+      "id": "UTE - 5",
+      "description": "Menghubungi PIC Library",
+      "test_steps": [
+        "1. Klik tombol \"Tanya Librarian\"",
+        "2. Masuk ke halaman WhatsApp"
+      ],
+      "test_data": null,
+      "expected_result": "User diarahkan ke aplikasi WhatsApp Web WhatsApp BAAK",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 6,
+      "id": "UTE - 6",
+      "description": "Menambahkan Buku ke Reservation Basket",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Online Catalog\"",
+        "3. Klik pada buku",
+        "4. Klik tombol \"Add to basket\""
+      ],
+      "test_data": {
+        "Location": "University Ciputra Surabaya",
+        "Judul": "Cerdas - Olahraga"
+      },
+      "expected_result": "Buku berhasil ditambahkan ke Reservation Basket",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 7,
+      "id": "UTE - 7",
+      "description": "Menghapus item dalam sub-katalog",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Online Catalog\"",
+        "3. Klik pada buku",
+        "4. Klik checklist \"Check All in our basket\"",
+        "5. Klik tombol \"Add to basket\""
+      ],
+      "test_data": {
+        "Location": "University Ciputra Surabaya",
+        "Judul": "Cerdas - Olahraga"
+      },
+      "expected_result": "User dapat melakukan uncheck checklist dan di-replace dengan buku yang baru dipilih",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 8,
+      "id": "UTE - 8",
+      "description": "Mengakses My Reservation Basket",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"My Reservation Basket\""
+      ],
+      "test_data": null,
+      "expected_result": "User berhasil masuk ke halaman My Reservation Basket",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 9,
+      "id": "UTE - 9",
+      "description": "Melihat Daftar Pinjaman (List)",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"My Reservation Basket\"",
+        "3. Scroll ke bagian \"Daftar Loan List\"",
+        "4. Pastikan data list statusnya Valid ditampilkan pada sistem"
+      ],
+      "test_data": null,
+      "expected_result": "Data list detail pada bagian Daftar Loan List berhasil ditampilkan",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 10,
+      "id": "UTE - 10",
+      "description": "Menghapus item dari dalam cart",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Online Catalog\"",
+        "3. Klik pada buku",
+        "4. Klik tombol \"Add to basket\"",
+        "5. Klik menu \"My Reservation Basket\"",
+        "6. Klik tombol \"Remove\""
+      ],
+      "test_data": null,
+      "expected_result": "User dapat menghapus buku yang terdapat pada Reservation Basket",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 11,
+      "id": "UTE - 11",
+      "description": "Melakukan Direct Booking",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Online Catalog\"",
+        "3. Klik pada buku",
+        "4. Klik tombol \"Add to basket\"",
+        "5. Klik menu \"My Reservation Basket\"",
+        "6. Klik menu \"Online Booking\""
+      ],
+      "test_data": {
+        "Alamat Pengiriman": "Universitas Ciputra Surabaya"
+      },
+      "expected_result": "User dapat melakukan direct booking menggunakan fitur yang tersedia",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 12,
+      "id": "UTE - 12",
+      "description": "Melihat Riwayat Online Booking",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"My Reservation Basket\"",
+        "3. Klik menu \"Online Booking History\""
+      ],
+      "test_data": null,
+      "expected_result": "User dapat melihat riwayat online booking",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 13,
+      "id": "UTE - 13",
+      "description": "Mengakses Form Request Collection",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Library New Collection\"",
+        "3. Klik menu \"Form\""
+      ],
+      "test_data": null,
+      "expected_result": "User berhasil masuk ke halaman Form Request Collection",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 14,
+      "id": "UTE - 14",
+      "description": "Mengisi dan Mengirim Form Request Collection",
+      "test_steps": [
+        "1. Klik/buka form Request",
+        "2. Isi judul pengarang, penerbit, ISBN, edisi, dan tahun",
+        "3. Klik menu \"Submit data\""
+      ],
+      "test_data": {
+        "Jenis Koleksi": "Hardcover",
+        "Pengarang": "(Sesuai nama)",
+        "Penerbit": "(Bebas)",
+        "Judul": "Buku QA",
+        "ISBN": "(Bebas)",
+        "Edisi": "1",
+        "Tahun": "2024"
+      },
+      "expected_result": "User dapat mengisi dan mengirim form Request Collection",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 15,
+      "id": "UTE - 15",
+      "description": "Mengakses dan Melihat Data Request Collection",
+      "test_steps": [
+        "1. Klik menu \"Library\"",
+        "2. Klik menu \"Library New Collection\"",
+        "3. Klik menu \"Data\""
+      ],
+      "test_data": null,
+      "expected_result": "User dapat melihat list data pada Request Collection",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    },
+    {
+      "no": 16,
+      "id": "UTE - 16",
+      "description": "Mencari Data Form yang Telah Diisi",
+      "test_steps": [
+        "1. Klik menu \"Data\"",
+        "2. Klik menu \"Search bar\"",
+        "3. Isi kata pencarian"
+      ],
+      "test_data": {
+        "Search": "Buku"
+      },
+      "expected_result": "User dapat menemukan data Form yang telah di-isi",
+      "actual_result": "",
+      "status": "",
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing reports and outputs
+playwright-report/
+test-results/
+playwright/.local-browsers/
+playwright/.auth/
+
+# AI Metadata
+
+# Editor/OS directories
+.DS_Store
+.vscode/
+.idea/
+.env
