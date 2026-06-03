@@ -42,7 +42,7 @@ test.describe('UT4 - Request Collection', () => {
     await expect(formElement).toBeVisible();
   });
 
-  test('UT4-2: Mengisi dan Mengirim Form Request Collection', async ({ page }) => {
+  test('UT4-2: Mengisi dan Mengirim Form Request Collection (Valid)', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('button', { name: /Library Req.*Collection|Library New Collection/i }).click();
     await dialog.getByRole('link', { name: /^Form$/i }).click();
@@ -74,7 +74,19 @@ test.describe('UT4 - Request Collection', () => {
     await expect(page.locator('body')).toContainText(/berhasil|success|submitted|tersimpan/i);
   });
 
-  test('UT4-3: Mengakses dan Melihat Data Request Collection', async ({ page }) => {
+  test('UT4-3: Mengisi dan Mengirim Form Request Collection (Invalid)', async ({ page }) => {
+    const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
+    await dialog.getByRole('button', { name: /Library Req.*Collection|Library New Collection/i }).click();
+    await dialog.getByRole('link', { name: /^Form$/i }).click();
+
+    // Submit form with all fields empty
+    await page.getByRole('button', { name: /Submit data|Submit/i }).click();
+
+    // Expect that no success message is shown since it's invalid
+    await expect(page.locator('body')).not.toContainText(/berhasil|success|submitted|tersimpan/i);
+  });
+
+  test('UT4-4: Mengakses dan Melihat Data Request Collection', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('button', { name: /Library Req.*Collection|Library New Collection/i }).click();
     await dialog.getByRole('link', { name: /^Data$/i }).click();
@@ -84,7 +96,7 @@ test.describe('UT4 - Request Collection', () => {
     await expect(dataTable).toBeVisible();
   });
 
-  test('UT4-4: Mencari Data Form yang Telah Diisi', async ({ page }) => {
+  test('UT4-5: Mencari Data Form yang Telah Diisi', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('button', { name: /Library Req.*Collection|Library New Collection/i }).click();
     await dialog.getByRole('link', { name: /^Data$/i }).click();

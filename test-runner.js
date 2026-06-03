@@ -5,20 +5,23 @@ const { stdin: input, stdout: output } = require('process');
 const testCases = [
   { id: 'UT1-1', title: 'UT1-1: Mengakses Halaman Library' },
   { id: 'UT2-1', title: 'UT2-1: Mengakses Online Catalog' },
-  { id: 'UT2-2', title: 'UT2-2: Melakukan Pencarian Buku Menggunakan Filter' },
-  { id: 'UT2-3', title: 'UT2-3: Melihat detail buku dan Memilih yang akan dipinjam' },
-  { id: 'UT2-4', title: 'UT2-4: Menghubungi PIC Library (Asking Librarian)' },
-  { id: 'UT2-5', title: 'UT2-5: Menambahkan Buku ke Reservation Basket' },
-  { id: 'UT2-6', title: 'UT2-6: Menghapus Data Basket Sebelumnya' },
+  { id: 'UT2-2', title: 'UT2-2: Melakukan Pencarian Buku Menggunakan Filter (Empty Title)' },
+  { id: 'UT2-3', title: 'UT2-3: Melakukan Pencarian Buku Menggunakan Filter (Publisher Filter)' },
+  { id: 'UT2-4', title: 'UT2-4: Melakukan Pencarian Buku Menggunakan Filter (Specific Title)' },
+  { id: 'UT2-5', title: 'UT2-5: Melihat Detail Buku dan Memilih yang Akan Dipinjam' },
+  { id: 'UT2-6', title: 'UT2-6: Menghubungi PIC Library' },
+  { id: 'UT2-7', title: 'UT2-7: Menambahkan Buku ke Reservation Basket' },
+  { id: 'UT2-8', title: 'UT2-8: Menghapus Data Basket Sebelumnya' },
   { id: 'UT3-1', title: 'UT3-1: Mengakses My Reservation Basket' },
   { id: 'UT3-2', title: 'UT3-2: Melihat Daftar Basket Loan' },
   { id: 'UT3-3', title: 'UT3-3: Menghapus Salah Satu Basket Loan List' },
   { id: 'UT3-4', title: 'UT3-4: Melakukan Online Booking' },
   { id: 'UT3-5', title: 'UT3-5: Melihat Riwayat Online Booking' },
   { id: 'UT4-1', title: 'UT4-1: Mengakses Form Request Collection' },
-  { id: 'UT4-2', title: 'UT4-2: Mengisi dan Mengirim Form Request Collection' },
-  { id: 'UT4-3', title: 'UT4-3: Mengakses dan Melihat Data Request Collection' },
-  { id: 'UT4-4', title: 'UT4-4: Mencari Data Form yang Telah Diisi' }
+  { id: 'UT4-2', title: 'UT4-2: Mengisi dan Mengirim Form Request Collection (Valid)' },
+  { id: 'UT4-3', title: 'UT4-3: Mengisi dan Mengirim Form Request Collection (Invalid)' },
+  { id: 'UT4-4', title: 'UT4-4: Mengakses dan Melihat Data Request Collection' },
+  { id: 'UT4-5', title: 'UT4-5: Mencari Data Form yang Telah Diisi' }
 ];
 
 let spinnerInterval = null;

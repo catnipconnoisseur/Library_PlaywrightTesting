@@ -52,7 +52,26 @@ test.describe('UT2 - Online Catalog', () => {
     await expect(page.locator('body')).toContainText(/catalog/i);
   });
 
-  test('UT2-2: Melakukan Pencarian Buku Menggunakan Filter', async ({ page }) => {
+  test('UT2-2: Melakukan Pencarian Buku Menggunakan Filter (Empty Title)', async ({ page }) => {
+    const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
+    await dialog.getByRole('link', { name: 'Online Catalog' }).click();
+
+    const locationSelect = page.locator('select, [class*="select"]').filter({ hasText: /location/i }).first();
+    if (await locationSelect.isVisible()) {
+      await locationSelect.selectOption({ label: 'Universitas Ciputra Surabaya' });
+    }
+
+    const searchInput = page.locator('input:not(#searchMenuItem):not([readonly])[type="text"], input:not(#searchMenuItem):not([readonly])[type="search"], input:not(#searchMenuItem):not([readonly])[placeholder*="search" i], input:not(#searchMenuItem):not([readonly])[placeholder*="title" i], input:not(#searchMenuItem):not([readonly])[placeholder*="judul" i]').filter({ visible: true }).first();
+    await searchInput.fill('');
+
+    await page.getByRole('button', { name: /Search/i }).click({ force: true });
+    await page.waitForTimeout(3000); // Wait for AJAX or page load
+
+    const resultTable = page.locator('table, .book-list, .catalog-list, .search-result, [class*="result"]').filter({ visible: true }).first();
+    await expect(resultTable).toBeVisible({ timeout: 15_000 });
+  });
+
+  test('UT2-3: Melakukan Pencarian Buku Menggunakan Filter (Publisher Filter)', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('link', { name: 'Online Catalog' }).click();
 
@@ -80,7 +99,26 @@ test.describe('UT2 - Online Catalog', () => {
     await expect(resultTable).toBeVisible({ timeout: 15_000 });
   });
 
-  test('UT2-3: Melihat detail buku dan Memilih yang akan dipinjam', async ({ page }) => {
+  test('UT2-4: Melakukan Pencarian Buku Menggunakan Filter (Specific Title)', async ({ page }) => {
+    const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
+    await dialog.getByRole('link', { name: 'Online Catalog' }).click();
+
+    const locationSelect = page.locator('select, [class*="select"]').filter({ hasText: /location/i }).first();
+    if (await locationSelect.isVisible()) {
+      await locationSelect.selectOption({ label: 'Universitas Ciputra Surabaya' });
+    }
+
+    const searchInput = page.locator('input:not(#searchMenuItem):not([readonly])[type="text"], input:not(#searchMenuItem):not([readonly])[type="search"], input:not(#searchMenuItem):not([readonly])[placeholder*="search" i], input:not(#searchMenuItem):not([readonly])[placeholder*="title" i], input:not(#searchMenuItem):not([readonly])[placeholder*="judul" i]').filter({ visible: true }).first();
+    await searchInput.fill('Masakan 123');
+
+    await page.getByRole('button', { name: /Search/i }).click({ force: true });
+    await page.waitForTimeout(3000); // Wait for AJAX or page load
+
+    const resultTable = page.locator('table, .book-list, .catalog-list, .search-result, [class*="result"]').filter({ visible: true }).first();
+    await expect(resultTable).toBeVisible({ timeout: 15_000 });
+  });
+
+  test('UT2-5: Melihat Detail Buku dan Memilih yang Akan Dipinjam', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('link', { name: 'Online Catalog' }).click();
 
@@ -103,7 +141,7 @@ test.describe('UT2 - Online Catalog', () => {
     }
   });
 
-  test('UT2-4: Menghubungi PIC Library (Asking Librarian)', async ({ page }) => {
+  test('UT2-6: Menghubungi PIC Library', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('link', { name: 'Online Catalog' }).click();
 
@@ -114,7 +152,7 @@ test.describe('UT2 - Online Catalog', () => {
     expect(popup.url()).toContain('whatsapp.com');
   });
 
-  test('UT2-5: Menambahkan Buku ke Reservation Basket', async ({ page }) => {
+  test('UT2-7: Menambahkan Buku ke Reservation Basket', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('link', { name: 'Online Catalog' }).click();
 
@@ -137,7 +175,7 @@ test.describe('UT2 - Online Catalog', () => {
     await expect(page.locator('body')).toContainText(/berhasil|success|added/i);
   });
 
-  test('UT2-6: Menghapus Data Basket Sebelumnya', async ({ page }) => {
+  test('UT2-8: Menghapus Data Basket Sebelumnya', async ({ page }) => {
     const dialog = page.locator('dialog, .offcanvas, .modal').filter({ hasText: 'Main Menu' }).first();
     await dialog.getByRole('link', { name: 'Online Catalog' }).click();
 
